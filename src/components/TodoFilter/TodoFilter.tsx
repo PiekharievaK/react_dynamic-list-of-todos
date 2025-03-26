@@ -1,6 +1,7 @@
+type FILTER = 'all' | 'completed' | 'active';
 type Props = {
   query: string;
-  filter: string;
+  filter: FILTER;
   onQueryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFilterChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   resetQuery: () => void;
