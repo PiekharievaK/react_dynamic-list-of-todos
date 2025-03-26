@@ -8,12 +8,7 @@ import { TodoModal } from './components/TodoModal';
 import { Loader } from './components/Loader';
 import { Todo } from './types/Todo';
 import { getTodos } from './api';
-
-enum FILTER {
-  all = 'all',
-  done = 'completed',
-  planing = 'active',
-}
+import { FILTER } from './helpers/enum';
 
 export const App: React.FC = () => {
   const [allTodos, setAllTodos] = useState<Todo[]>([]);

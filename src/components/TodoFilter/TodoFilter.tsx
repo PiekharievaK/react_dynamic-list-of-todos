@@ -1,4 +1,5 @@
-type FILTER = 'all' | 'completed' | 'active';
+import { FILTER } from '../../helpers/enum';
+
 type Props = {
   query: string;
   filter: FILTER;
@@ -23,9 +24,9 @@ export const TodoFilter: React.FC<Props> = ({
             value={filter}
             onChange={onFilterChange}
           >
-            <option value="all">All</option>
-            <option value="active">Active</option>
-            <option value="completed">Completed</option>
+            <option value={FILTER.all}>All</option>
+            <option value={FILTER.planing}>Active</option>
+            <option value={FILTER.done}>Completed</option>
           </select>
         </span>
       </p>
