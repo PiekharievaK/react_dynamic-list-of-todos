@@ -23,6 +23,23 @@ function get<T>(url: string): Promise<T> {
     .then(res => res.json());
 }
 
-export const getTodos = () => get<Todo[]>('/todos');
+export const getTodos = async (
+  setValue: (v: Todo[]) => void,
+  setIsPending: (v: boolean) => void,
+) => {
+  setIsPending(true);
+  await get<Todo[]>('/todos').then(resp => setValue(resp));
+  setIsPending(false);
+};
 
-export const getUser = (userId: number) => get<User>(`/users/${userId}`);
+export const getUser = async (
+  userId: number,
+  setUser: (v: User) => void,
+  setIsPending: (v: boolean) => void,
+) => {
+  setIsPending(true);
+  const data = await get<User>(`/users/${userId}`);
+
+  setUser(data);
+  setIsPending(false);
+};
